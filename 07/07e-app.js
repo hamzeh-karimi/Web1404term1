@@ -6,6 +6,8 @@ const secret = 'ajkdjaffasddfj';
 const LOGIN_TIME = 5; //min
 
 function verifToken(token){
+
+    console.log('ssss', token)
     try{
         jwt.verify(token, secret);
         console.log('token time', x.iat);
