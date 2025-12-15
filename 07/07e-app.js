@@ -209,5 +209,34 @@ use("login", function(request, response){
     }
 
 });
+            use("login2",function(request,response){      
+                  
+                readFile("./data.json", { encoding: 'utf8' }, function (err, body) {
+                    if (err) {
+                        write(response,500,"server error!!!")
+                    } else {
+                        body = JSON.parse(body);
+                        let records = body.records;
+                        for(let item of records){
+                            if (item.user==request.body.user && item.pass==request.body.pass) {
+                                console.log("true")
+
+                               
+                                let obj = {user:item.user}
+
+                                let token=jwt.sign(obj,secret);
+                                console.log("token",token)
+                                write(response,200,"login success",{
+                                    "Set-Cookie":"token="+token
+                                })
+
+                                return "true"
+                            }
+                        }
+                        write(response,400,"faild login!!")
+                    }
+                });
+                
+                })
 
 start();
