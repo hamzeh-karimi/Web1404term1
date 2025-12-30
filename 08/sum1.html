@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>sum</title>
+</head>
+
+<body>
+    <h1>sum</h1>
+
+    <input id="i1" type="text"> </br>
+    <input id="i2" type="text"> </br>
+    <input id="btn" type="button" value="submit"> </br>
+
+
+    <script>
+        async function sum() {
+            let val1 = document.getElementById('i1').value;
+            let val2 = document.getElementById("i2").value;
+            
+            let response = await fetch('http://127.0.0.1/publicSum/'+val1+'/'+val2);
+            if (!response.ok) {
+                console.log("fatch reponse errr!!");
+            }
+            else {
+                let data = await response.text();
+                console.log(data);
+            }
+        }
+
+        document.getElementById("btn")
+            .addEventListener("click", function () {
+                sum();
+            })
+    </script>
+
+</body>
+
+</html>

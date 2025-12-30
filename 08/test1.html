@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    slam
+    <script>
+        console.log("slaaaaam!");
+        async function testCall(){
+            let response = await fetch('http://127.0.0.1/hello/amirali');
+            if (!response.ok) {
+                console.log("fatch reponse errr!!");
+            }
+            else{
+                let data = await response.json();
+                console.log(data);
+            }
+        }
+        testCall();
+    </script>
+</body>
+</html>
